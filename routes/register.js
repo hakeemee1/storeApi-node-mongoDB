@@ -20,6 +20,7 @@ router.get("/", async function (req, res, next) {
     });
   }
 });
+
 // Register
 router.post("/", async function (req, res, next) {
   try {
