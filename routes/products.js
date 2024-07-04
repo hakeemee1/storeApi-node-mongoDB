@@ -64,6 +64,23 @@ router.put("/:id", async function (req, res, next) {
     }
 });
 
+//Get product by id
+router.get("/:id", async function (req, res, next) {
+    try {
+        const product = await Product.findById(req.params.id);
+        return res.status(200).send({
+            data: product,
+            message: "Get product successfully",
+            success: true,
+        });
+    } catch (err) {
+        return res.status(500).send({
+            message: err.message,
+            success: false,
+        });
+    }
+});
+
 //Delete product
 router.delete("/:id", async function (req, res, next) {
     try {
