@@ -64,4 +64,21 @@ router.put("/:id", async function (req, res, next) {
     }
 });
 
+//Delete product
+router.delete("/:id", async function (req, res, next) {
+    try {
+        const product = await Product.findByIdAndDelete(req.params.id);
+        return res.status(200).send({
+            data: product,
+            message: "Delete product successfully",
+            success: true,
+        });
+    } catch (err) {
+        return res.status(500).send({
+            message: err.message,
+            success: false,
+        });
+    }
+});
+
 module.exports = router;
