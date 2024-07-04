@@ -1,11 +1,9 @@
-// getting-started.js
-const mongoose = require('mongoose');
+var express = require('express');
+var router = express.Router();
 
-main().catch(err => console.log(err));
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('login respond with a resource');
+});
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/storeApi');
-  console.log("Connected to the database");
-
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-}
+module.exports = router;
