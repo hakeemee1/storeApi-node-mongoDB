@@ -3,11 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('./db');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+//create mongoose connection
+const mongoose = require('mongoose');
+const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASS } = process.env;
 var app = express();
+var cors = require('cors');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
