@@ -42,4 +42,26 @@ router.post("/", async function (req, res, next) {
     }
 });
 
+//Update product
+router.put("/:id", async function (req, res, next) {
+    try {
+        const { product_name, price, amount } = req.body;
+        const product = await Product.findByIdAndUpdate(req.params.id, {
+            product_name,
+            price,
+            amount
+        });
+        return res.status(200).send({
+            data: product,
+            message: "Update product successfully",
+            success: true,
+        });
+    } catch (err) {
+        return res.status(500).send({
+            message: err.message,
+            success: false,
+        }); 
+    }
+});
+
 module.exports = router;
