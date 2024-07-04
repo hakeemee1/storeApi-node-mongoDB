@@ -20,6 +20,10 @@ const userSchema = new Schema(
       type: String,
       default: "user",
     },
+    approved: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
