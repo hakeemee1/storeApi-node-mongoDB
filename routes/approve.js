@@ -12,4 +12,6 @@ router.put("/:id", authAdmin, async function (req, res, next) {
   res.send(user);
 });
 
+
+
 module.exports = router;

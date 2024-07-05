@@ -15,6 +15,7 @@ var loginRouter = require('./routes/login');
 var productRouter = require('./routes/products');
 var tesRuote = require('./routes/test');
 var approvedRouter = require('./routes/approve');
+var orderRouter = require('./routes/orders');
 
 //create mongoose connection
 const mongoose = require('mongoose');
@@ -41,6 +42,8 @@ app.use(`${BASE_URL}/products`, productRouter);
 app.use(`${BASE_URL}/login`, loginRouter);
 app.use(`${BASE_URL}/test`, tesRuote);
 app.use(`${BASE_URL}/approve`, approvedRouter);
+app.use(`${BASE_URL}/orders`, orderRouter);
+
 
 
 // catch 404 and forward to error handler
