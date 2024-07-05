@@ -132,4 +132,22 @@ router.post("/:id/orders", authUser, async function (req, res, next) {
   }
 });
 
+//show all order of product id
+router.get("/:id/orders", authUser, async function (req, res, next) {
+  const id = req.params.id;
+  try {
+    const orders = await Order.find({ product_id: id });
+    if (orders.length === 0) throw { status: 400, message: "Order not found" };
+    return res.status(200).send({
+      data: orders,
+      message: "Get orders successfully",
+      success: true,
+    });
+  } catch (err) {
+    return res.status(500).send({
+      message: err.message,
+      success: false,
+    });
+  }
+});
 module.exports = router;
