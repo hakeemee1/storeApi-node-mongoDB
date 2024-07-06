@@ -13,7 +13,9 @@ router.post("/", async function (req, res, next) {
     if (!password) throw { status: 400, message: "Password is required" };
 
     let validUser = await User.findOne({ username });
-    if (!validUser.approved)
+    if(!validUser)
+      throw { status: 400, message: "User not found" };
+    if (!validUser?.approved)
       throw { status: 400, message: "Your account is not approved" };
     if (!validUser)
       throw { status: 400, message: "Username or Password is incorrect" };
