@@ -15,6 +15,14 @@ const productSchema = new Schema(
             type: Number,
             required: true,
         },
+        description: {
+            type: String,
+            required: false,
+        },
+        image: {
+            type: String,
+            required: false,
+        },  
     },
     {
         timestamps: true,

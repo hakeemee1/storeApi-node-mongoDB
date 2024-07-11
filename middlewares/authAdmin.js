@@ -8,9 +8,7 @@ const authAdmin = async (req, res, next) => {
       return res.status(401).json({ message: "Unauthorized1", error: true });
 
     const refreshToken = req.cookies.refreshToken;
-    if (!refreshToken)
-      return res.status(401).json({ message: "Unauthorized2", error: true });
-
+    
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     if (!decoded)
       return res.status(403).json({ message: "Forbidden", error: true });

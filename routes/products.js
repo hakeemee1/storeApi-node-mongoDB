@@ -25,11 +25,13 @@ router.get("/", async function (req, res, next) {
 //Post product
 router.post("/", authAdmin, async function (req, res, next) {
   try {
-    const { product_name, price, amount } = req.body;
+    const { product_name, price, amount, description, image } = req.body;
     const newProduct = new Product({
       product_name,
       price,
       amount,
+      description,
+      image,
     });
     const product = await newProduct.save();
     return res.status(200).send({
@@ -48,11 +50,13 @@ router.post("/", authAdmin, async function (req, res, next) {
 //Update product
 router.put("/:id", authAdmin, async function (req, res, next) {
   try {
-    const { product_name, price, amount } = req.body;
+    const { product_name, price, amount, description, image } = req.body;
     const product = await Product.findByIdAndUpdate(req.params.id, {
       product_name,
       price,
       amount,
+      description,
+      image,
     });
     return res.status(200).send({
       data: product,

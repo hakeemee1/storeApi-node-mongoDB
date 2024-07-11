@@ -23,7 +23,7 @@ const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASS } = process.env;
 var app = express();
 var cors = require('cors');
 
-
+app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
